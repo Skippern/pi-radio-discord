@@ -30,7 +30,7 @@ class PTTBot:
             logger.info(f"[core]: Logged inn to Discord as {self.user.name}#{self.user.discriminator}")
             for i in self.get_all_channels():
                 print(f"{i.name}")
-                if i.name == "radio"
+                if i.name == "radio":
                     radio = i
             await radio.connect()
 
