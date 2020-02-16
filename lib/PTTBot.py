@@ -20,10 +20,10 @@ class PTTBot:
         logger.info(f'{__version__}')
         self = commands.Bot(command_prefix='~', description="I talk on Radio")
     
-    @self.command(pass_context=True)
-    async def kill(ctx):
-        logger.info("[kill]: Killed by user")
-        await discord.Client.close(self)
+        @self.command(pass_context=True)
+        async def kill(ctx):
+            logger.info("[kill]: Killed by user")
+            await discord.Client.close(self)
 
 
     self.run(BOT_CONF['DISCORD_BOT_KEY'])
