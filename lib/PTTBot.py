@@ -10,6 +10,9 @@ import logging
 import discord
 from discord.ext import commands
 
+import gpiozero
+import gpio
+
 BOT_CONF = {}
 with open('conf.json') as f:
     BOT_CONF = json.load(f)
