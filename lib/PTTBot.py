@@ -11,7 +11,15 @@ import discord
 from discord.ext import commands
 
 import gpiozero
-import gpio
+#import gpio
+import RPi.GPIO as GPIO
+
+vhf_ptt = Button(16)
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(20,GPIO.OUT,initial=True)
+#GPIO.setup(16,GPIO.IN,initial=False)
 
 BOT_CONF = {}
 with open('conf.json') as f:
@@ -36,6 +44,15 @@ class PTTBot:
                 if i.name == "radio":
                     radio = i
             await radio.connect()
+
+        @self.event
+#        async def GPIO.input(16,True):
+        async def vhf_ptt.is_pressed:
+        # VHF starts transmission
+            print("Unmuted")
+        @self.event
+        async def vhf_ptt.is_released:
+            print("Muted")
 
         @self.command(pass_context=True)
         async def kill(ctx):
