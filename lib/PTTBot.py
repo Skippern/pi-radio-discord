@@ -27,7 +27,7 @@ class PTTBot:
 
         @self.event
         async def on_ready():
-            logger.info(f"[core]: Logged inn to Discord as {self.user.name}#{self.useer.discriminator}")
+            logger.info(f"[core]: Logged inn to Discord as {self.user.name}#{self.user.discriminator}")
 #            for i in self.get_all_channels():
 #                print(f"{i.name}")
 #            await radio.connect()
