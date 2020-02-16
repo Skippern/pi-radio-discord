@@ -21,7 +21,7 @@ class PTTBot:
         self = commands.Bot(command_prefix='~', description="I talk on Radio")
     
     @self.command(pass_context=True)
-    async def kill(ctx)
+    async def kill(ctx):
         logger.info("[kill]: Killed by user")
         await discord.Client.close(self)
 
