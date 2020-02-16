@@ -9,6 +9,8 @@ import logging
 
 import discord
 
+from lib.PTTBot import *
+
 logger = logging.getLogger("PTTBot")
 logging.basicConfig(filename="/var/log/Motorola/PTT.log")
 
