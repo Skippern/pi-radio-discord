@@ -28,13 +28,14 @@ class PTTBot:
         @self.event
         async def on_ready():
             logger.info(f"[core]: Logged inn to Discord as {self.user.name}#{self.useer.discriminator}")
-            for i in self.get_all_channels():
-                print(f"{i.name}")
+#            for i in self.get_all_channels():
+#                print(f"{i.name}")
+#            await radio.connect()
+
         @self.command(pass_context=True)
         async def kill(ctx):
             logger.info("[kill]: Killed by user")
             await discord.Client.close(self)
-
 
         self.run(BOT_CONF['DISCORD_BOT_KEY'])
 
