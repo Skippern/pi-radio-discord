@@ -18,4 +18,9 @@ class PTTBot:
     def __init__(self):
         __version__="0.0.1"
         logger.info(f'{__version__}')
+    
+
+
+
+    self.run(BOT_CONF]'DISCORD_BOT_KEY'])
 
