@@ -18,7 +18,7 @@ class PTTBot:
     def __init__(self):
         __version__="0.0.1"
         logger.info(f'{__version__}')
-        self = discord.commands.Bot(command_prefix='~', description="I talk on Radio")
+        self = discord.ext.commands.Bot(command_prefix='~', description="I talk on Radio")
     
         @self.command(pass_context=True)
         async def kill(ctx):
