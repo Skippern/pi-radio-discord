@@ -26,5 +26,5 @@ class PTTBot:
             await discord.Client.close(self)
 
 
-    self.run(BOT_CONF['DISCORD_BOT_KEY'])
+        self.run(BOT_CONF['DISCORD_BOT_KEY'])
 
