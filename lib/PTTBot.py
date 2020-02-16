@@ -11,7 +11,7 @@ import discord
 from discord.ext import commands
 
 BOT_CONF = {}
-from open('conf.json') as f:
+with open('conf.json') as f:
     BOT_CONF = json.load(f)
 
 logger = logging.getLogger("PTTBot")
