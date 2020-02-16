@@ -1,0 +1,6 @@
+18 Common Ground           : Black
+12 Audio Ground            : Brown
+11 Tx Audio                : Red
+14 Rx Audio                : Orange
+21 Radio Activity          : Green
+17 PTT                     : Yellow
