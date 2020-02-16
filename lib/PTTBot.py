@@ -22,5 +22,5 @@ class PTTBot:
 
 
 
-    self.run(BOT_CONF]'DISCORD_BOT_KEY'])
+    self.run(BOT_CONF['DISCORD_BOT_KEY'])
 
