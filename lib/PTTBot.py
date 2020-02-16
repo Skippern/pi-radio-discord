@@ -8,7 +8,7 @@ import asyncio
 import logging
 
 import discord
-from doscord.ext import commands
+from discord.ext import commands
 
 logger = logging.getLogger("PTTBot")
 logging.basicConfig(filename="/var/log/Motorola/PTT.log")
