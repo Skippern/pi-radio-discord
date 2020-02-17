@@ -33,13 +33,6 @@ logging.basicConfig(filename="/var/log/Motorola/PTT.log", level=logging.INFO, da
 logger.info("discord.py version: {0}".format(discord.__version__))
 
 class PTTBot:
-    def __init__(self, *args, **kwargs):
-        super().__init__(self, *args, **kwargs)
-        __version__="0.0.1"
-        logger.info(f'PTT Bot version: {__version__}')
-        self = commands.Bot(command_prefix='~', description="I talk on Radio")
-        self.radioAudio = RadioAudioSource()
-
     async def vhf_ptt_routine():
         print("Initiating VHF PTT")
         logger.info("[PTT]: VHF PTT initiated")
@@ -53,20 +46,27 @@ class PTTBot:
                 logger.info("[PTT]: Muted")
             await asyncio.sleep(1.3)
 
-    @self.event
-    async def on_ready():
-        logger.info(f"[core]: Logged inn to Discord as {self.user.name}#{self.user.discriminator}")
-        for i in self.get_all_channels():
-            if i.name == "radio":
-                radio = i
-        await radio.connect()
-        radio.listen(radioSink())
-        self.loop.create_task(vhf_ptt_routine())
+    def __init__(self, *args, **kwargs):
+        super().__init__(self, *args, **kwargs)
+        __version__="0.0.1"
+        logger.info(f'PTT Bot version: {__version__}')
+        self = commands.Bot(command_prefix='~', description="I talk on Radio")
+        self.radioAudio = RadioAudioSource()
 
-    @self.command(pass_context=True)
-    async def kill(ctx):
-        logger.info("[kill]: Killed by user")
-        await discord.Client.close(self)
+        @self.event
+        async def on_ready():
+            logger.info(f"[core]: Logged inn to Discord as {self.user.name}#{self.user.discriminator}")
+            for i in self.get_all_channels():
+                if i.name == "radio":
+                    radio = i
+            await radio.connect()
+            radio.listen(radioSink())
+            self.loop.create_task(vhf_ptt_routine())
 
-    self.run(BOT_CONF['DISCORD_BOT_KEY'])
+        @self.command(pass_context=True)
+        async def kill(ctx):
+            logger.info("[kill]: Killed by user")
+            await discord.Client.close(self)
+
+        self.run(BOT_CONF['DISCORD_BOT_KEY'])
 
