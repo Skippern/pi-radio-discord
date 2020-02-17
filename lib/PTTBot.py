@@ -45,14 +45,21 @@ class PTTBot:
                     radio = i
             await radio.connect()
 
-        @self.event
+        async def vhf_ptt_routine():
+            await self.wait_until_ready()
+            while True:
+                if vhf_ptt.is_pressed:
+                    echo "Unmuted"
+                if vhf_ptt.is_released:
+                    eecho "Muted"
+#        @self.event
 #        async def GPIO.input(16,True):
-        async def vhf_ptt.is_pressed:
+#        async def vhf_ptt.is_pressed:
         # VHF starts transmission
-            print("Unmuted")
-        @self.event
-        async def vhf_ptt.is_released:
-            print("Muted")
+#            print("Unmuted")
+#        @self.event
+#        async def vhf_ptt.is_released:
+#            print("Muted")
 
         @self.command(pass_context=True)
         async def kill(ctx):
