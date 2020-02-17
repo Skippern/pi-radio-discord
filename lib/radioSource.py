@@ -3,7 +3,7 @@
 import discord
 import threading
 import asyncio
-import time, math, ranndom
+import time, math, random
 import sounddevice as sd 
 
 # Get Audio from Radio via mic port
