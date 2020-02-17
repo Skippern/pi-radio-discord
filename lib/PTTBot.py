@@ -56,6 +56,7 @@ class PTTBot:
                 if i.name == "radio":
                     radio = i
             await radio.connect()
+            self.loop.create_task(vhf_ptt_routine())
 
         @self.command(pass_context=True)
         async def kill(ctx):
