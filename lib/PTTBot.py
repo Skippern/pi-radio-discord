@@ -43,17 +43,6 @@ class PTTBot:
         self = commands.Bot(command_prefix='~', description="I talk on Radio")
         self.radioAudio = RadioAudioSource()
         self.voiceClient = None
-        self.loop.create_task(vhf_ptt_routine())
-        self.loop.create_task(self.periodicStateCheck())
-
-        @self.event
-        async def on_ready():
-            logger.info(f"[core]: Logged inn to Discord as {self.user.name}#{self.user.discriminator}")
-            for i in self.get_all_channels():
-                if i.name == "radio":
-                    radio = i
-            await radio.connect()
-#            radio.listen(radioSink())
 
         async def vhf_ptt_routine():
             print("Initiating VHF PTT")
@@ -67,6 +56,17 @@ class PTTBot:
                     print("Muted")
                     logger.info("[PTT]: Muted")
                 await asyncio.sleep(1.3)
+
+        @self.event
+        async def on_ready():
+            logger.info(f"[core]: Logged inn to Discord as {self.user.name}#{self.user.discriminator}")
+            for i in self.get_all_channels():
+                if i.name == "radio":
+                    radio = i
+            await radio.connect()
+            self.loop.create_task(vhf_ptt_routine())
+            self.loop.create_task(self.periodicStateCheck())
+#            radio.listen(radioSink())
 
         @self.command(pass_context=True)
         async def kill(ctx):
