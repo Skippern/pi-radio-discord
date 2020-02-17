@@ -19,7 +19,11 @@ import RPi.GPIO as GPIO
 from lib.radioSource import *
 #import lib.chatSource
 
-RADIO_DEVICE = '/dev/snd/pcmC0D0p'
+#RADIO_DEVICE = '/dev/snd/pcmC0D0p'
+RADIO_DEVICE = '/dev/snd/pcmC0D1p'
+#RADIO_DEVICE = '/dev/snd/pcmC0D2p'
+#RADIO_DEVICE = '/dev/snd/pcmC1D0c'
+#RADIO_DEVICE = '/dev/snd/pcmC1D0p'
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
