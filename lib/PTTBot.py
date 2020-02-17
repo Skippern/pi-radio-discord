@@ -39,7 +39,7 @@ class PTTBot:
         async def vhf_ptt_routine():
             print("Initiating VHF PTT")
             logger.info("VHF PTT initiated")
-            set_name("VHF_PTT_routine")
+#            set_name("VHF_PTT_routine")
             await self.wait_until_ready()
             while True:
                 if vhf_ptt.is_pressed:
