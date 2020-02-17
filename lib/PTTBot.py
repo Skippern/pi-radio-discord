@@ -42,10 +42,10 @@ class PTTBot:
 #            set_name("VHF_PTT_routine")
             await self.wait_until_ready()
             while True:
-                if vhf_ptt.is_pressed:
+                if vhf_ptt.when_pressed:
                     print("Unmuted")
-#                if vhf_ptt.is_released:
-#                    print("Muted")
+                if vhf_ptt.when_released:
+                    print("Muted")
                 time.sleep(0.3)
 
         @self.event
