@@ -14,7 +14,7 @@ import gpiozero
 #import gpio
 import RPi.GPIO as GPIO
 
-vhf_ptt = Button(16)
+vhf_ptt = gpiozero.Button(16)
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
