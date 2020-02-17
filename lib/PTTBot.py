@@ -55,7 +55,7 @@ class PTTBot:
         self = commands.Bot(command_prefix='~', description="I talk on Radio")
         self.radioAudio = RadioAudioSource()
         self.voiceClient = None
-        self.loop.create_task(vhf_ptt_routine())
+#        self.loop.create_task(vhf_ptt_routine())
 #        self.loop.create_task(self.periodicStateCheck())
 
         @self.event
