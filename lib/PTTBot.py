@@ -19,6 +19,8 @@ import RPi.GPIO as GPIO
 from lib.radioSource import *
 #import lib.chatSource
 
+RADIO_DEVICE = '/dev/snd/pcmC0D0p'
+
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(20,GPIO.OUT,initial=True)
@@ -60,6 +62,7 @@ class PTTBot:
         async def periodicStateCheck(self):
             print("Initiating Periodic check")
             while True:
+                voice_player.play(discord.FFmpeegPCMAudio(RADIO_DEVICE))
                 await asyncio.sleep(0.25)
 
         @self.event
