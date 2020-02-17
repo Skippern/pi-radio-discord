@@ -44,8 +44,8 @@ class PTTBot:
             while True:
                 if vhf_ptt.is_pressed:
                     print("Unmuted")
-                if vhf_ptt.is_released:
-                    print("Muted")
+#                if vhf_ptt.is_released:
+#                    print("Muted")
                 time.sleep(0.3)
 
         @self.event
