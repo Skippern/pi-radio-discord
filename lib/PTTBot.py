@@ -44,7 +44,7 @@ class PTTBot:
         self.radioAudio = RadioAudioSource()
         self.voiceClient = None
 
-        async def vhf_ptt_routine():
+        async def vhf_ptt_routine(self):
             print("Initiating VHF PTT")
             logger.info("[PTT]: VHF PTT initiated")
             await self.wait_until_ready()
@@ -56,6 +56,11 @@ class PTTBot:
                     print("Muted")
                     logger.info("[PTT]: Muted")
                 await asyncio.sleep(1.3)
+
+        async def periodicStateCheck(self):
+            print("Initiating Periodic check")
+            while True:
+                await asyncio.sleep(0.25)
 
         @self.event
         async def on_ready():
