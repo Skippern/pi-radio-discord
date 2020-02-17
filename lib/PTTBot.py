@@ -24,8 +24,8 @@ from lib.radioSource import *
 #RADIO_DEVICE = '/dev/snd/pcmC0D2p'
 #RADIO_DEVICE = '/dev/snd/pcmC1D0c'
 #RADIO_DEVICE = '/dev/snd/pcmC1D0p'
-RADIO_DEVICE = '/dev/snd/controlC0'
-#RADIO_DEVICE = '/dev/snd/controlC1'
+#RADIO_DEVICE = '/dev/snd/controlC0'
+RADIO_DEVICE = '/dev/snd/controlC1'
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
