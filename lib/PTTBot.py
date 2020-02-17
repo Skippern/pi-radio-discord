@@ -16,7 +16,7 @@ import gpiozero
 #import gpio
 import RPi.GPIO as GPIO
 
-import lib.radioSource
+from lib.radioSource import *
 #import lib.chatSource
 
 GPIO.setwarnings(False)
