@@ -35,18 +35,6 @@ logging.basicConfig(filename="/var/log/Motorola/PTT.log", level=logging.INFO, da
 logger.info("discord.py version: {0}".format(discord.__version__))
 
 class PTTBot:
-    async def vhf_ptt_routine():
-        print("Initiating VHF PTT")
-        logger.info("[PTT]: VHF PTT initiated")
-        await self.wait_until_ready()
-        while not self.is_closed:
-            if vhf_ptt.when_pressed:
-                print("Unmuted")
-                logger.info("[PTT]: Unmuted")
-            if vhf_ptt.when_released:
-                print("Muted")
-                logger.info("[PTT]: Muted")
-            await asyncio.sleep(1.3)
 
     def __init__(self, *args, **kwargs):
 #        super().__init__(self, *args, **kwargs)
@@ -55,8 +43,8 @@ class PTTBot:
         self = commands.Bot(command_prefix='~', description="I talk on Radio")
         self.radioAudio = RadioAudioSource()
         self.voiceClient = None
-#        self.loop.create_task(vhf_ptt_routine())
-#        self.loop.create_task(self.periodicStateCheck())
+        self.loop.create_task(vhf_ptt_routine())
+        self.loop.create_task(self.periodicStateCheck())
 
         @self.event
         async def on_ready():
@@ -66,6 +54,19 @@ class PTTBot:
                     radio = i
             await radio.connect()
 #            radio.listen(radioSink())
+
+        async def vhf_ptt_routine():
+            print("Initiating VHF PTT")
+            logger.info("[PTT]: VHF PTT initiated")
+            await self.wait_until_ready()
+            while not self.is_closed:
+                if vhf_ptt.when_pressed:
+                    print("Unmuted")
+                    logger.info("[PTT]: Unmuted")
+                if vhf_ptt.when_released:
+                    print("Muted")
+                    logger.info("[PTT]: Muted")
+                await asyncio.sleep(1.3)
 
         @self.command(pass_context=True)
         async def kill(ctx):
