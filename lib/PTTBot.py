@@ -14,12 +14,12 @@ import gpiozero
 #import gpio
 import RPi.GPIO as GPIO
 
-vhf_ptt = gpiozero.Button(16)
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(20,GPIO.OUT,initial=True)
 #GPIO.setup(16,GPIO.IN,initial=False)
+vhf_ptt = gpiozero.Button(16)
 
 BOT_CONF = {}
 with open('conf.json') as f:
@@ -36,6 +36,18 @@ class PTTBot:
         logger.info(f'{__version__}')
         self = commands.Bot(command_prefix='~', description="I talk on Radio")
 
+        async def vhf_ptt_routine():
+            print("Initiating VHF PTT")
+            logger.info("VHF PTT initiated")
+            set_name("VHF_PTT_routine")
+            await self.wait_until_ready()
+            while True:
+                if vhf_ptt.is_pressed:
+                    print("Unmuted")
+                if vhf_ptt.is_released:
+                    print("Muted")
+                time.sleep(0.3)
+
         @self.event
         async def on_ready():
             logger.info(f"[core]: Logged inn to Discord as {self.user.name}#{self.user.discriminator}")
@@ -44,22 +56,6 @@ class PTTBot:
                 if i.name == "radio":
                     radio = i
             await radio.connect()
-
-        async def vhf_ptt_routine():
-            await self.wait_until_ready()
-            while True:
-                if vhf_ptt.is_pressed:
-                    print("Unmuted")
-                if vhf_ptt.is_released:
-                    print("Muted")
-#        @self.event
-#        async def GPIO.input(16,True):
-#        async def vhf_ptt.is_pressed:
-        # VHF starts transmission
-#            print("Unmuted")
-#        @self.event
-#        async def vhf_ptt.is_released:
-#            print("Muted")
 
         @self.command(pass_context=True)
         async def kill(ctx):
