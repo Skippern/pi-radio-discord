@@ -49,9 +49,9 @@ class PTTBot:
             await self.wait_until_ready()
             while True:
                 if vhf_ptt.is_pressed:
-                    echo "Unmuted"
+                    print("Unmuted")
                 if vhf_ptt.is_released:
-                    eecho "Muted"
+                    print("Muted")
 #        @self.event
 #        async def GPIO.input(16,True):
 #        async def vhf_ptt.is_pressed:
