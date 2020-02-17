@@ -70,7 +70,7 @@ class PTTBot:
                     radio = i
             await radio.connect()
             self.loop.create_task(vhf_ptt_routine(self))
-            self.loop.create_task(self.periodicStateCheck(self))
+            self.loop.create_task(periodicStateCheck(self))
 #            radio.listen(radioSink())
 
         @self.command(pass_context=True)
