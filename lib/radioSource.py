@@ -12,7 +12,7 @@ class RadioAudioSource(discord.PCMAudio):
         self.SAMP_RATE_HZ = 48000.0 # 48 kHz
         self.SAMP_PERIOD_SEC = 1.0/self.SAMP_RATE_HZ
         self.NUM_SAMPLES = int((duration_ms/1000.0)/self.SAMP_PERIOD_SEC)
-        self.audioStream = sd.RawInputStream(samplerate=self.SAMP_RATE_HZ, channels=1, dtype='int16', blocksizee=self.NUM_SAMPLES)
+        self.audioStream = sd.RawInputStream(samplerate=self.SAMP_RATE_HZ, channels=1, dtype='int16', blocksize=self.NUM_SAMPLES)
         self.audioStream.start()
 
     def read(self):
