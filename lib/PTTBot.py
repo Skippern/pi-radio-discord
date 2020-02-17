@@ -47,7 +47,7 @@ class PTTBot:
             await asyncio.sleep(1.3)
 
     def __init__(self, *args, **kwargs):
-        super().__init__(self, *args, **kwargs)
+#        super().__init__(self, *args, **kwargs)
         __version__="0.0.1"
         logger.info(f'PTT Bot version: {__version__}')
         self = commands.Bot(command_prefix='~', description="I talk on Radio")
