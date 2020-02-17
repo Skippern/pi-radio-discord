@@ -16,6 +16,8 @@ import gpiozero
 #import gpio
 import RPi.GPIO as GPIO
 
+import lib.radioSource
+#import lib.chatSource
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
