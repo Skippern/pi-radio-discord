@@ -46,7 +46,7 @@ class PTTBot:
                     print("Unmuted")
                 if vhf_ptt.when_released:
                     print("Muted")
-                time.sleep(0.3)
+                time.sleep(1.3)
 
         @self.event
         async def on_ready():
